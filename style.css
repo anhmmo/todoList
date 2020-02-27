@@ -46,10 +46,7 @@ ul li:before {
     padding: 10px 10px;
     font-size: 20px;
 }
-ul li:hover {
-    text-decoration: line-through;
-    cursor: pointer;
-}
+
 ul li:last-child {
     border-bottom: none;
 }
@@ -63,5 +60,20 @@ ul li:last-child {
 }
 .checked:hover {
     text-decoration: none;
+}
+
+#todo-list i {
+    display: block;
+    font-size: 25px;
+    color: #444;
+    float: right;
+    margin-top: 3px;
+    margin-right: 25px;
+}
+
+
+#todo-list i:hover {
+    cursor: pointer;
+    color: red;
 }
 

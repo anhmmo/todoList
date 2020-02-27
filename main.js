@@ -1,44 +1,14 @@
+let list = document.querySelector('#todo-list'),
+    form = document.querySelector('#submit-form'),
+    input = document.querySelector('#input'),
+    itemData = [];
 
-    let list = document.querySelector('#todo-list'),
-        form = document.querySelector('#submit-form'),
-        item = document.querySelector('#item');
-    
-    form.addEventListener('submit', addNewItem , false);
+let todoList = {
+  
+}
+ 
 
-    function addNewItem (e) {
-        e.preventDefault();
-        list.innerHTML += '<li>' + item.value + '</li>';
-        store();
-        item.value = "";
-    }
-    
-    list.addEventListener('click', selectItem , false);
 
-   function selectItem(e) {
-      let t = e.target;
-      if(t.classList.contains('checked')){
-        t.classList.remove('checked');
-      } else {
-        t.classList.add('checked');
-      }
-      store();
-   }
-    
-    function store() {
-      window.localStorage.myitems = list.innerHTML;
-      
-    }
-    
-    function getValues() {
-      let storedValues = window.localStorage.myitems;
-      if(!storedValues) {
-        list.innerHTML = '';
-      }
-      else {
-        list.innerHTML = storedValues;
-      }
-    }
-    getValues();
 
 
 
