@@ -64,8 +64,4 @@ ul li:last-child {
 .checked:hover {
     text-decoration: none;
 }
-.checked:hover:after {
-    content: "(remove)";
-    color: tomato;
-    text-align: right;
-}
+

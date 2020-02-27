@@ -1,27 +1,32 @@
 
-    let list = document.querySelector('#list'),
-        form = document.querySelector('form'),
+    let list = document.querySelector('#todo-list'),
+        form = document.querySelector('#submit-form'),
         item = document.querySelector('#item');
     
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      list.innerHTML += '<li>' + item.value + '</li>';
-      store();
-      item.value = "";
-    },false)
+    form.addEventListener('submit', addNewItem , false);
+
+    function addNewItem (e) {
+        e.preventDefault();
+        list.innerHTML += '<li>' + item.value + '</li>';
+        store();
+        item.value = "";
+    }
     
-    list.addEventListener('click',function(e){
+    list.addEventListener('click', selectItem , false);
+
+   function selectItem(e) {
       let t = e.target;
       if(t.classList.contains('checked')){
-        t.parentNode.removeChild(t);
+        t.classList.remove('checked');
       } else {
         t.classList.add('checked');
       }
       store();
-    },false)
+   }
     
     function store() {
       window.localStorage.myitems = list.innerHTML;
+      
     }
     
     function getValues() {
