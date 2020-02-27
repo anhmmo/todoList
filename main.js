@@ -1,6 +1,5 @@
-(function(){
-  
-    var list = document.querySelector('#list'),
+
+    let list = document.querySelector('#list'),
         form = document.querySelector('form'),
         item = document.querySelector('#item');
     
@@ -12,7 +11,7 @@
     },false)
     
     list.addEventListener('click',function(e){
-      var t = e.target;
+      let t = e.target;
       if(t.classList.contains('checked')){
         t.parentNode.removeChild(t);
       } else {
@@ -26,7 +25,7 @@
     }
     
     function getValues() {
-      var storedValues = window.localStorage.myitems;
+      let storedValues = window.localStorage.myitems;
       if(!storedValues) {
         list.innerHTML = '';
       }
@@ -35,9 +34,6 @@
       }
     }
     getValues();
-  })();
-
-
 
 
 
