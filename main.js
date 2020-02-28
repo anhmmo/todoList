@@ -1,15 +1,156 @@
+window.onload = checkExitsLocalStorage();
+
+function checkExitsLocalStorage() {
+    //return 0 if not exists, if exists localStorageLength > 1 or = 1.
+
+    if(localStorage.length < 1){
+        //set an sample data, this data can remove like this: const jsonData = JSON.stringify([]);
+        const jsonData = JSON.stringify([]);
+        localStorage.setItem("TODO-LIST", jsonData);
+    }
+}
+
+
+
 let list = document.querySelector('#todo-list'),
     form = document.querySelector('#submit-form'),
     input = document.querySelector('#input'),
-    itemData = [];
+    storeKey = "TODO-LIST";
 
 let todoList = {
-  
+  itemData : [],
+  load: function (){
+    const jsonData = localStorage.getItem(storeKey);
+    try {
+            this.itemData = JSON.parse(jsonData);
+    } catch (e) {
+        alert("some thing wrong !");
+    }
+  },
+  add: function(items){
+    this.itemData.push(items);
+  },
+  edit:function(index, items){
+    this.itemData[index] = items;
+  },
+  delete: function(index){
+    this.itemData.splice(index,1);
+  },
+  save: function(){
+    const jsonData = JSON.stringify(this.itemData);
+    localStorage.setItem(storeKey, jsonData);
+  },
+  get data(){
+    return this.itemData;
+  },
+  set changeData(newContent) {
+    return this.itemData = newContent;
+  }
 }
  
 
+form.addEventListener("submit", addNewItem, false);
+  function addNewItem(e) {
+    e.preventDefault();
+
+    todoList.add(`${input.value}`);
+    todoList.save();
+    
+    window.location.reload();
+}
 
 
+todoList.load();
+renderTodoList();
+
+
+
+
+function renderTodoList () {
+    if(localStorage.length > 0) {
+    
+      let item = todoList.data;
+      let output = "";
+      for (let index = 0; index < item.length; index++) {
+        output += `<li class="item">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="copy fas fa-copyright" onclick="copyItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
+      }
+      list.innerHTML = output;
+    }
+    
+}
+
+function deleteItem(index) {
+  preventListFunction();
+
+  let deletePopup = document.getElementById("delete-popup");
+  let yes = document.getElementById("yes");
+  let no = document.getElementById("no");
+
+  deletePopup.style.display = "block";
+
+  yes.addEventListener("click", function() {
+    todoList.delete(index);
+    todoList.save();
+    window.location.reload();
+  });
+ 
+  no.addEventListener("click", function() {
+    deletePopup.style.display = "none";
+    window.location.reload();
+  });
+}
+
+function editItem(index) {
+  preventListFunction();
+
+  let editPopup = document.getElementById("edit-popup");
+  let oldItem = document.getElementById("old-item");
+  let change = document.getElementById("change");
+  let cancel = document.getElementById("cancel");
+  
+  editPopup.style.display = "block";
+  oldItem.value = todoList.data[index];
+
+
+  change.addEventListener("click", getNewContent);
+  let newContent;
+  function getNewContent() {
+    newContent = oldItem.value;
+    todoList.edit(index, newContent);
+    todoList.save();
+    window.location.reload();
+  }
+  
+  cancel.addEventListener("click", function(){
+    editPopup.style.display = "none";
+    window.location.reload();
+  });
+}
+
+function copyItem(index) {
+  preventListFunction();
+  todoList.save();
+}
+
+function infoItem(index) {
+  preventListFunction();
+  todoList.save();
+}
+
+
+list.addEventListener('click', chooseItem ,false);
+function chooseItem(e) {
+  let t = e.target;
+  if(t.classList.contains('checked')){
+    t.classList.remove('checked');
+  } else {
+    t.classList.add('checked');
+  }
+}
+
+function preventListFunction () {
+  list.removeEventListener("click", chooseItem);
+}
 
 
 /*
