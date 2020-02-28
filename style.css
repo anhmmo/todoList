@@ -64,10 +64,10 @@ ul li:last-child {
 
 #todo-list i {
     display: block;
-    font-size: 25px;
+    font-size: 22px;
     color: #444;
     float: right;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-right: 25px;
 }
 
@@ -138,4 +138,39 @@ ul li:last-child {
 #info-popup button {
     margin-left: 40%;
 }
+
+
+/*delete all*/
+#delete-box{
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+}
+
+#delete-all-item {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#delete-all-item:hover {
+    color: red;
+}
+
+#delete-box p{
+    margin: 0;
+    color: red;
+    font-size: 30px;
+    margin: 0 0 10px -2%;
+}
+
+.delete-tooltip{
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(253, 109, 84);
+    padding: 0 5px;
+}
+
+
 

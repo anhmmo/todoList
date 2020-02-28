@@ -95,6 +95,12 @@ let dateTime = {
     const createM = JSON.stringify(this.mTime);
     localStorage.setItem(modifyKey, createM);
   },
+  deleteC: function(index){
+    this.cTime.splice(index,1);
+  },
+  deleteM: function(index){
+    this.mTime.splice(index,1);
+  },
 
   get currentTime(){
     return this.cTime;
@@ -132,7 +138,7 @@ function renderTodoList () {
       let item = todoList.data;
       let output = "";
       for (let index = 0; index < item.length; index++) {
-        output += `<li class="item">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
+        output += `<li class="item" onclick="selectItemBox(${index})">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
       }
       list.innerHTML = output;
     }
@@ -206,11 +212,24 @@ function infoItem(index) {
   });
 
   content.innerHTML = todoList.data[index];
-  createdDate.innerHTML = "created date : " + dateTime.currentTime[index];
+  createdDate.innerHTML = "Created date : " + dateTime.currentTime[index];
 
-  typeof dateTime.modifiedTime[index] !== "string" ? modifidedDate.innerHTML = "modifided date : not yet modify" : modifidedDate.innerHTML = "modifided date : " + dateTime.modifiedTime[index];
+  typeof dateTime.modifiedTime[index] !== "string" ? modifidedDate.innerHTML = "Modifided date : not yet modify" : modifidedDate.innerHTML = "Modifided date : " + dateTime.modifiedTime[index];
   
 }
+
+function preventListFunction () {
+  list.removeEventListener("click", chooseItem);
+}
+
+function getCurrentDateTime () {
+  let currentTime = new Date();
+  return currentTime.toString();
+}
+
+
+
+//select all and delete
 
 list.addEventListener('click', chooseItem ,false);
 function chooseItem(e) {
@@ -222,15 +241,43 @@ function chooseItem(e) {
   }
 }
 
-function preventListFunction () {
-  list.removeEventListener("click", chooseItem);
+let deleteArray = [];
+let filtedArray = [];
+let selectedAllPersons = document.getElementById("delete-box");
+let selectedAllStudents = document.getElementById("delete-all-item");
+let counterDelete = document.getElementById("delete-counter");
+
+selectedAllStudents.addEventListener("click", function() {
+    deteteSelectedStudents(filtedArray);
+});
+
+function selectItemBox (index) {
+
+  deleteArray.indexOf(index) === -1 ? deleteArray[index] = index : deleteArray[index] = undefined;
+
+  filtedArray = deleteArray.filter(item => typeof item === "number");
+  
+  filtedArray.length > 9 ? counterDelete.innerText = filtedArray.length : counterDelete.innerText = "0" + filtedArray.length;
+
+  filtedArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
+
 }
 
-function getCurrentDateTime () {
-  let currentTime = new Date();
-  return currentTime;
-}
+function deteteSelectedStudents (filtedArray) {
 
+for (let i = filtedArray.length - 1; i >= 0; i--) {
+  if(typeof filtedArray[i] !== "undefined"){
+    todoList.delete(filtedArray[i]); 
+    dateTime.deleteC(filtedArray[i]);
+    dateTime.deleteM(filtedArray[i]);
+  }      
+}  
+
+dateTime.saveC();
+dateTime.saveM();
+todoList.save();
+window.location.reload();
+}
 
 
 
