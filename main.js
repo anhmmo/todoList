@@ -2,7 +2,9 @@
 let list = document.querySelector('#todo-list'),
 form = document.querySelector('#submit-form'),
 input = document.querySelector('#input'),
-storeKey = "todoList";
+storeKey = "todoList",
+dateKey = "datetime";
+
 
 window.onload = checkExitsLocalStorage();
 
@@ -14,6 +16,11 @@ function checkExitsLocalStorage() {
         const jsonData = JSON.stringify([]);
         localStorage.setItem("todoList", jsonData);
     }
+
+    if(!localStorage.datetime){
+      const jsonData = JSON.stringify([]);
+      localStorage.setItem("datetime", jsonData);
+  }
 }
 
 let todoList = {
