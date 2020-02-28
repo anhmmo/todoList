@@ -72,7 +72,7 @@ function renderTodoList () {
       let item = todoList.data;
       let output = "";
       for (let index = 0; index < item.length; index++) {
-        output += `<li class="item">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="copy fas fa-copyright" onclick="copyItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
+        output += `<li class="item">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
       }
       list.innerHTML = output;
     }
@@ -127,10 +127,6 @@ function editItem(index) {
   });
 }
 
-function copyItem(index) {
-  preventListFunction();
-  todoList.save();
-}
 
 function infoItem(index) {
   preventListFunction();
