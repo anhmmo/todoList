@@ -3,7 +3,8 @@ let list = document.querySelector('#todo-list'),
 form = document.querySelector('#submit-form'),
 input = document.querySelector('#input'),
 storeKey = "todoList",
-dateKey = "datetime";
+createKey = "createtime",
+modifyKey = "modifytime";
 
 
 window.onload = checkExitsLocalStorage();
@@ -14,13 +15,19 @@ function checkExitsLocalStorage() {
     if(!localStorage.todoList){
         //set an sample data, this data can remove like this: const jsonData = JSON.stringify([]);
         const jsonData = JSON.stringify([]);
-        localStorage.setItem("todoList", jsonData);
+        localStorage.setItem(storeKey, jsonData);
     }
 
-    if(!localStorage.datetime){
-      const jsonData = JSON.stringify([]);
-      localStorage.setItem("datetime", jsonData);
-  }
+    if(!localStorage.createtime){
+      const createTime = JSON.stringify([]);
+      localStorage.setItem(createKey, createTime);
+    }
+
+    if(!localStorage.modifytime){
+      const modifyTime = JSON.stringify([]);
+      localStorage.setItem(modifyKey, modifyTime);
+    }
+    
 }
 
 let todoList = {
@@ -55,17 +62,64 @@ let todoList = {
 }
  
 
+let dateTime = {
+  cTime : [],
+  mTime: [],
+  loadCTime: function (){
+    const jsonDataC = localStorage.getItem(createKey);
+    try {
+            this.cTime = JSON.parse(jsonDataC);
+    } catch (e) {
+        alert("some thing wrong !");
+    }
+  },
+  loadMTime: function (){
+    const jsonDataM = localStorage.getItem(modifyKey);
+    try {
+            this.mTime = JSON.parse(jsonDataM);
+    } catch (e) {
+        alert("some thing wrong !");
+    }
+  },
+  addC: function(timer){
+    this.cTime.push(timer);
+  },
+  addM: function(index,content){
+    this.mTime[index] = content;
+  },
+  saveC: function() {
+    const createT = JSON.stringify(this.cTime);
+    localStorage.setItem(createKey, createT);
+  },
+  saveM : function() {
+    const createM = JSON.stringify(this.mTime);
+    localStorage.setItem(modifyKey, createM);
+  },
+
+  get currentTime(){
+    return this.cTime;
+  },
+  get modifiedTime() {
+    return this.mTime;
+  }
+}
+
 form.addEventListener("submit", addNewItem, false);
   function addNewItem(e) {
     e.preventDefault();
 
+    let createdTime = getCurrentDateTime();
+    dateTime.addC(createdTime);
+    dateTime.saveC();
+    
     todoList.add(`${input.value}`);
     todoList.save();
-    
+
     window.location.reload();
 }
 
-
+dateTime.loadMTime();
+dateTime.loadCTime();
 todoList.load();
 renderTodoList();
 
@@ -124,6 +178,9 @@ function editItem(index) {
     newContent = oldItem.value;
     todoList.edit(index, newContent);
     todoList.save();
+    let createdTime = getCurrentDateTime();
+    dateTime.addM(index,createdTime);
+    dateTime.saveM();
     window.location.reload();
   }
   
@@ -136,7 +193,12 @@ function editItem(index) {
 
 function infoItem(index) {
   preventListFunction();
-  todoList.save();
+  let infoPopup = document.getElementById("info-popup");
+  let content = document.getElementById("content");
+  let createdDate = document.getElementById("created-date");
+  let modifidedDate = document.getElementById("modifited-date");
+
+  infoPopup.style.display = "block";
 }
 
 
@@ -153,6 +215,13 @@ function chooseItem(e) {
 function preventListFunction () {
   list.removeEventListener("click", chooseItem);
 }
+
+function getCurrentDateTime () {
+  let currentTime = new Date();
+  return currentTime;
+}
+
+
 
 
 /*
