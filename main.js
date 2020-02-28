@@ -1,21 +1,20 @@
+
+let list = document.querySelector('#todo-list'),
+form = document.querySelector('#submit-form'),
+input = document.querySelector('#input'),
+storeKey = "todoList";
+
 window.onload = checkExitsLocalStorage();
 
 function checkExitsLocalStorage() {
     //return 0 if not exists, if exists localStorageLength > 1 or = 1.
 
-    if(localStorage.length < 1){
+    if(!localStorage.todoList){
         //set an sample data, this data can remove like this: const jsonData = JSON.stringify([]);
         const jsonData = JSON.stringify([]);
-        localStorage.setItem("TODO-LIST", jsonData);
+        localStorage.setItem("todoList", jsonData);
     }
 }
-
-
-
-let list = document.querySelector('#todo-list'),
-    form = document.querySelector('#submit-form'),
-    input = document.querySelector('#input'),
-    storeKey = "TODO-LIST";
 
 let todoList = {
   itemData : [],

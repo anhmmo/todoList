@@ -42,7 +42,7 @@ ul li {
     padding: 8px 0;
 }
 ul li:before {
-    content: "\25A1";
+    content: "\27E4";
     padding: 10px 10px;
     font-size: 20px;
 }
@@ -54,7 +54,7 @@ ul li:last-child {
     color: green;
 }
 .checked:before {
-    content: "\2713";
+    content: "\2705";
     padding: 10px 10px;
     font-size: 20px;
 }
