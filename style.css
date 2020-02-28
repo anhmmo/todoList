@@ -96,7 +96,7 @@ ul li:last-child {
     outline: 3px solid rgb(255, 255, 255);
 }
 
-#edit-popup button, #delete-popup button{
+#edit-popup button, #delete-popup button, #info-popup button{
     border: 0;
     outline: 0;
     padding: 10px 25px;
@@ -126,10 +126,16 @@ ul li:last-child {
 
 #info-popup {
     display: none;
+    max-width: 500px;
 } 
 
 #info-popup #content{
     text-align: center;
     font-size: 20px;
 } 
+
+
+#info-popup button {
+    margin-left: 40%;
+}
 

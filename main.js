@@ -197,10 +197,20 @@ function infoItem(index) {
   let content = document.getElementById("content");
   let createdDate = document.getElementById("created-date");
   let modifidedDate = document.getElementById("modifited-date");
+  let exit = document.getElementById("exit");
 
   infoPopup.style.display = "block";
-}
+  exit.addEventListener("click",function(){
+    infoPopup.style.display = "none";
+    window.location.reload();
+  });
 
+  content.innerHTML = todoList.data[index];
+  createdDate.innerHTML = "created date : " + dateTime.currentTime[index];
+
+  typeof dateTime.modifiedTime[index] !== "string" ? modifidedDate.innerHTML = "modifided date : not yet modify" : modifidedDate.innerHTML = "modifided date : " + dateTime.modifiedTime[index];
+  
+}
 
 list.addEventListener('click', chooseItem ,false);
 function chooseItem(e) {
@@ -299,4 +309,6 @@ req.setRequestHeader("secret-key", "$2b$10$US/v6OfdpvD6Xf6hinIxoOm4cPleG6nnrVJm6
 req.send();
 
 }
+
+
 */
