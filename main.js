@@ -27,7 +27,7 @@ function checkExitsLocalStorage() {
       const modifyTime = JSON.stringify([]);
       localStorage.setItem(modifyKey, modifyTime);
     }
-    
+
 }
 
 let todoList = {
@@ -146,7 +146,7 @@ function renderTodoList () {
 }
 
 function deleteItem(index) {
-  preventListFunction();
+  preventListFunction(index);
 
   let deletePopup = document.getElementById("delete-popup");
   let yes = document.getElementById("yes");
@@ -157,6 +157,10 @@ function deleteItem(index) {
   yes.addEventListener("click", function() {
     todoList.delete(index);
     todoList.save();
+    dateTime.deleteC(index);
+    dateTime.deleteM(index);
+    dateTime.saveC();
+    dateTime.saveM();
     window.location.reload();
   });
  
@@ -167,7 +171,7 @@ function deleteItem(index) {
 }
 
 function editItem(index) {
-  preventListFunction();
+  preventListFunction(index);
 
   let editPopup = document.getElementById("edit-popup");
   let oldItem = document.getElementById("old-item");
@@ -198,7 +202,7 @@ function editItem(index) {
 
 
 function infoItem(index) {
-  preventListFunction();
+  preventListFunction(index);
   let infoPopup = document.getElementById("info-popup");
   let content = document.getElementById("content");
   let createdDate = document.getElementById("created-date");
@@ -218,8 +222,9 @@ function infoItem(index) {
   
 }
 
-function preventListFunction () {
+function preventListFunction (index) {
   list.removeEventListener("click", chooseItem);
+  list.querySelectorAll("li")[index].onclick = null;
 }
 
 function getCurrentDateTime () {
@@ -251,7 +256,7 @@ selectedAllStudents.addEventListener("click", function() {
     deteteSelectedStudents(filtedArray);
 });
 
-function selectItemBox (index) {
+function selectItemBox(index) {
 
   deleteArray.indexOf(index) === -1 ? deleteArray[index] = index : deleteArray[index] = undefined;
 
@@ -280,6 +285,38 @@ window.location.reload();
 }
 
 
+let selectItem = list.querySelectorAll("li");
+let todoListLength = selectItem.length;
+document.getElementById("select-all").innerHTML = `Check all ${todoListLength} items`;
+
+let selectAll = document.getElementById("select-all");
+selectAll.addEventListener('click', chooseAll ,false);
+
+function chooseAll() {
+  if(this.classList.contains('select-checked')){
+    this.classList.remove('select-checked');
+    this.innerHTML = `Check all ${todoListLength} items`;
+    for (let index = 0; index < todoListLength; index++) {
+      selectItem[index].classList.remove("checked");
+    }
+  } else {
+    this.classList.add('select-checked');
+    this.innerHTML = `Uncheck ${todoListLength} items`;
+    for (let index = 0; index < todoListLength; index++) {
+      selectItem[index].classList.add("checked");
+      deleteArray[index] = todoList.data[index];
+      deleteArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
+      deleteArray.length > 9 ? counterDelete.innerText = deleteArray.length : counterDelete.innerText = "0" + deleteArray.length;
+      selectedAllStudents.addEventListener("click", function() {
+        deteteSelectedStudents(deleteArray);
+    });
+      
+    }
+    console.log(deleteArray);
+  }
+
+  
+}
 
 /*
 

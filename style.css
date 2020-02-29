@@ -40,6 +40,7 @@ ul li {
     border-bottom: 1px solid #cfcbcc;
     line-height: 1.5;
     padding: 8px 0;
+    word-wrap: break-word;
 }
 ul li:before {
     content: "\25A2";
@@ -173,4 +174,29 @@ ul li:last-child {
 }
 
 
+.select-all {
+    position: fixed;
+    top: 19%;
+    right: 18%;
+}
 
+
+.select-all:hover {
+   cursor: pointer;
+}
+
+.select-all::before {
+    content: "\25A2";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.select-checked {
+    color: green;
+}
+
+.select-checked:before {
+    content: "\2705";
+    padding: 10px 10px;
+    font-size: 20px;
+}
