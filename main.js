@@ -248,11 +248,13 @@ function chooseItem(e) {
 
 let deleteArray = [];
 let filtedArray = [];
+
 let selectedAllPersons = document.getElementById("delete-box");
 let selectedAllStudents = document.getElementById("delete-all-item");
 let counterDelete = document.getElementById("delete-counter");
 
 selectedAllStudents.addEventListener("click", function() {
+  console.log(filtedArray);
     deteteSelectedStudents(filtedArray);
 });
 
@@ -265,23 +267,22 @@ function selectItemBox(index) {
   filtedArray.length > 9 ? counterDelete.innerText = filtedArray.length : counterDelete.innerText = "0" + filtedArray.length;
 
   filtedArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
-
 }
 
 function deteteSelectedStudents (filtedArray) {
-
+ 
 for (let i = filtedArray.length - 1; i >= 0; i--) {
   if(typeof filtedArray[i] !== "undefined"){
     todoList.delete(filtedArray[i]); 
     dateTime.deleteC(filtedArray[i]);
     dateTime.deleteM(filtedArray[i]);
+   console.log(filtedArray[i]);
   }      
 }  
-
 dateTime.saveC();
 dateTime.saveM();
 todoList.save();
-window.location.reload();
+ window.location.reload();
 }
 
 
@@ -298,24 +299,27 @@ function chooseAll() {
     this.innerHTML = `Check all ${todoListLength} items`;
     for (let index = 0; index < todoListLength; index++) {
       selectItem[index].classList.remove("checked");
+      
     }
+
+    deleteArray = [];
+    deleteArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
+
+
   } else {
     this.classList.add('select-checked');
     this.innerHTML = `Uncheck ${todoListLength} items`;
     for (let index = 0; index < todoListLength; index++) {
       selectItem[index].classList.add("checked");
-      deleteArray[index] = todoList.data[index];
+      deleteArray[index] = index;
       deleteArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
       deleteArray.length > 9 ? counterDelete.innerText = deleteArray.length : counterDelete.innerText = "0" + deleteArray.length;
-      selectedAllStudents.addEventListener("click", function() {
-        deteteSelectedStudents(deleteArray);
-    });
-      
+      filtedArray = deleteArray;
     }
-    console.log(deleteArray);
+    
   }
-
-  
+  console.log(deleteArray);
+console.log(filtedArray);
 }
 
 /*
