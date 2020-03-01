@@ -138,7 +138,7 @@ function renderTodoList () {
       let item = todoList.data;
       let output = "";
       for (let index = 0; index < item.length; index++) {
-        output += `<li class="item" onclick="selectItemBox(${index})">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
+        output += `<li class="item" onclick="selectItemBox(${index})">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i><a id="mobile" href="#" class="mobile-select"></a></li>`;
       }
       list.innerHTML = output;
     }

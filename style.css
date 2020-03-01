@@ -165,9 +165,13 @@ ul li:last-child {
     margin: 0 0 10px -2%;
 }
 
-.delete::after {
-    display: none;
+#mobile::after {
+    float: right;
+    margin-top: 4px;
+    margin-right: 10px;
     content: "\2807";
+    text-decoration: none;
+    color: #2c2c2c;
 }
 
 .delete-tooltip{
@@ -209,7 +213,7 @@ ul li:last-child {
 
 
 @media (max-width: 600px) {
-    .delete::after {
+    #mobile::after {
         display: block;
     }
 }
