@@ -331,7 +331,6 @@ console.log(filtedArray);
 let mobile = document.getElementById("mobile");
 let a = false;
 function openMenu(index) {
-  document.getElementById("delete-box").style.display = "none";
   if(a){
     document.getElementById(`info${index}`).style.display = "none";
     document.getElementById(`edit${index}`).style.display = "none";
@@ -345,9 +344,13 @@ function openMenu(index) {
     document.getElementById(`edit${index}`).style.display = "block";
     document.getElementById(`delete${index}`).style.display = "block";
     a = true;
+    preventListFunction();
+
   }
+
+  window.location.reload();
   
-  preventListFunction();
+  
 }
 
 
