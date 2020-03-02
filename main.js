@@ -329,24 +329,31 @@ console.log(filtedArray);
 
 
 let mobile = document.getElementById("mobile");
-let a = false;
+let mobileMenu = document.getElementById("mobile-menu");
+let exitBtn = mobileMenu.querySelector("#exit");
+let deleteBtn = mobileMenu.querySelector("#delete");
+let saveBtn = mobileMenu.querySelector("#save");
+let inputValues = document.getElementById("mobile-change-input");
+let content = document.getElementById("mobile-content");
+let createdDate = document.getElementById("mobile-created-date");
+let modifidedDate = document.getElementById("mobile-modify-date");
+
 function openMenu(index) {
-  if(a){
-    document.getElementById(`info${index}`).style.display = "none";
-    a = false;
-  }
+  list.querySelectorAll("li")[index].onclick = null;
+  mobileMenu.style.display = "block";
 
-  else {
-    document.getElementById(`info${index}`).style.display = "block";
-    a = true;
-    preventListFunction();
+  content.innerHTML = todoList.data[index];
+  createdDate.innerHTML = "Created date : " + dateTime.currentTime[index];
 
-  }
+  typeof dateTime.modifiedTime[index] !== "string" ? modifidedDate.innerHTML = "Modifided date : not yet modify" : modifidedDate.innerHTML = "Modifided date : " + dateTime.modifiedTime[index];
 
-  window.location.reload();
-  
-  
+  inputValues.value = todoList.data[index];
 }
+
+exitBtn.addEventListener("click", function() {
+  mobileMenu.style.display = "none";
+  window.location.reload();
+});
 
 
 /*

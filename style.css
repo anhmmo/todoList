@@ -212,7 +212,53 @@ ul li:last-child {
 
 
 /*mobile section popup*/
+#mobile-menu {
 
+    display: none;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: linear-gradient(to right bottom, #ff5331, #a71c5a);
+    
+}
+
+#mobile-menu p{
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#mobile-menu input{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
+
+#mobile-menu button{
+    width: 25%;
+    padding: 5px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 1rem 0 1rem 6%;
+}
+
+#mobile-menu #delete {
+    background-color: rgb(240, 59, 35);
+}
+
+#mobile-menu #save {
+    background-color: rgb(41, 241, 124);
+}
+
+#mobile-menu #exit {
+    background-color: rgb(245, 248, 33);
+}
 
 
 @media (max-width: 700px) {
