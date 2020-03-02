@@ -166,6 +166,7 @@ ul li:last-child {
 }
 
 #mobile::after {
+    display: none;
     float: right;
     margin-top: 4px;
     margin-right: 10px;
@@ -216,8 +217,9 @@ ul li:last-child {
     #mobile::after {
         display: block;
     }
+
+    #todo-list i {
+        display: none;
+    }
 }
 
-#todo-list i {
-    display: none;
-}

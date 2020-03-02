@@ -138,7 +138,7 @@ function renderTodoList () {
       let item = todoList.data;
       let output = "";
       for (let index = 0; index < item.length; index++) {
-        output += `<li class="item" onclick="selectItemBox(${index})">${item[index]}<i class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i class="info fas fa-info-circle" onclick="infoItem(${index})"></i><a id="mobile" href="#" class="mobile-select"></a></li>`;
+        output += `<li class="item" onclick="selectItemBox(${index})">${item[index]}<a id="mobile" href="#" onclick="openMenu(${index})"></a><i id="delete${index}" class="delete fas fa-trash" onclick="deleteItem(${index})"></i><i id="edit${index}" class="edit fas fa-user-edit" onclick="editItem(${index})"></i><i id="info${index}"class="info fas fa-info-circle" onclick="infoItem(${index})"></i></li>`;
       }
       list.innerHTML = output;
     }
@@ -321,6 +321,33 @@ function chooseAll() {
   console.log(deleteArray);
 console.log(filtedArray);
 }
+
+
+
+
+//open 3 dots menu box
+
+
+let mobile = document.getElementById("mobile");
+let a = false;
+function openMenu(index) {
+  if(a){
+    document.getElementById(`info${index}`).style.display = "none";
+    document.getElementById(`edit${index}`).style.display = "none";
+    document.getElementById(`delete${index}`).style.display = "none";
+    a = false;
+  }
+
+  else {
+    document.getElementById(`info${index}`).style.display = "block";
+    document.getElementById(`edit${index}`).style.display = "block";
+    document.getElementById(`delete${index}`).style.display = "block";
+    a = true;
+  }
+  
+  preventListFunction();
+}
+
 
 /*
 
