@@ -45,6 +45,7 @@ ul li:before {
     content: "\25A2";
     padding: 10px 10px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 ul li:last-child {
