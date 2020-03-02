@@ -331,7 +331,6 @@ console.log(filtedArray);
 let mobile = document.getElementById("mobile");
 let mobileMenu = document.getElementById("mobile-menu");
 let exitBtn = mobileMenu.querySelector("#exit");
-let deleteBtn = mobileMenu.querySelector("#delete");
 let saveBtn = mobileMenu.querySelector("#save");
 let inputValues = document.getElementById("mobile-change-input");
 let content = document.getElementById("mobile-content");
@@ -348,12 +347,25 @@ function openMenu(index) {
   typeof dateTime.modifiedTime[index] !== "string" ? modifidedDate.innerHTML = "Modifided date : not yet modify" : modifidedDate.innerHTML = "Modifided date : " + dateTime.modifiedTime[index];
 
   inputValues.value = todoList.data[index];
+
+  saveBtn.addEventListener("click", function() {
+    let newContent = inputValues.value;
+    todoList.edit(index, newContent);
+    todoList.save();
+    let modifyedTime = getCurrentDateTime();
+    dateTime.addM(index,modifyedTime);
+    dateTime.saveM();
+    window.location.reload();
+  });
 }
 
 exitBtn.addEventListener("click", function() {
   mobileMenu.style.display = "none";
   window.location.reload();
 });
+
+
+
 
 
 /*

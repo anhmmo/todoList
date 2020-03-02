@@ -245,19 +245,14 @@ ul li:last-child {
     color: white;
     font-size: 18px;
     text-align: center;
-    margin: 1rem 0 1rem 6%;
+    margin: 1rem 0 1rem 16%;
 }
-
-#mobile-menu #delete {
-    background-color: rgb(240, 59, 35);
-}
-
 #mobile-menu #save {
     background-color: rgb(41, 241, 124);
 }
 
 #mobile-menu #exit {
-    background-color: rgb(245, 248, 33);
+    background-color: rgb(240, 59, 35);
 }
 
 
