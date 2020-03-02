@@ -9,7 +9,6 @@ body {
     width: 100%;
     display: table;
     margin: 0 auto;
-    margin-top: 40px;
     border: 1px solid #cfcbcc;
 }
 input {
@@ -145,7 +144,7 @@ ul li:last-child {
 #delete-box{
     display: none;
     position: fixed;
-    top: 20%;
+    top: 13.5%;
     left: 10%;
 }
 
@@ -185,9 +184,9 @@ ul li:last-child {
 
 
 .select-all {
-    position: fixed;
-    top: 19%;
-    right: 18%;
+    display: block;
+    text-align: center;
+    margin: 40px 0 15px 0;
 }
 
 
@@ -212,14 +211,34 @@ ul li:last-child {
 }
 
 
+/*mobile section popup*/
 
-@media (max-width: 600px) {
+
+
+@media (max-width: 700px) {
     #mobile::after {
         display: block;
     }
 
     #todo-list i {
         display: none;
+    }
+
+    .delete-tooltip {
+        display: none;
+    }
+
+    #delete-box{
+        top: 16.6%;
+    }
+
+    #delete-all-item{
+        font-size: 25px;
+    }
+
+    #delete-box p {
+        margin-bottom: 2px;
+        font-size: 23px;
     }
 }
 

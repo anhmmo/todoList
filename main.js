@@ -333,16 +333,11 @@ let a = false;
 function openMenu(index) {
   if(a){
     document.getElementById(`info${index}`).style.display = "none";
-    document.getElementById(`edit${index}`).style.display = "none";
-    document.getElementById(`delete${index}`).style.display = "none";
     a = false;
   }
 
   else {
-    
     document.getElementById(`info${index}`).style.display = "block";
-    document.getElementById(`edit${index}`).style.display = "block";
-    document.getElementById(`delete${index}`).style.display = "block";
     a = true;
     preventListFunction();
 
