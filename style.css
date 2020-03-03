@@ -186,8 +186,8 @@ ul li:last-child {
 
 .select-all {
     display: block;
-    text-align: center;
-    margin: 40px 0 15px 0;
+    max-width: 200px;
+    margin: 40px auto 15px auto;
 }
 
 
@@ -256,6 +256,12 @@ ul li:last-child {
     background-color: rgb(240, 59, 35);
 }
 
+@media (max-width: 1030px) {
+    #delete-box{
+        top: 8%;
+        left: 12%;
+    }
+}
 
 @media (max-width: 700px) {
     #mobile::after {
@@ -284,3 +290,11 @@ ul li:last-child {
     }
 }
 
+
+@media (max-width: 320px) {
+
+    #delete-box{
+        top: 22.6%;
+    }
+
+}
