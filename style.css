@@ -1,24 +1,27 @@
+html {
+    font-size: 10px;
+}
+
 body {
     background: #eee;
     color: #444;
     font-family: 'Helvetica', arial, sans-serif;
+    font-size: 1.6rem;
 }
 
 /*Header and main title*/
 h1, h2 {
     text-align: center;
-    margin-bottom: 0px;
-    line-height: 1;
 }
+
 h2 {
     color: gray;
 }
 
 /*select-all section*/
 .select-all {
-    display: block;
-    max-width: 200px;
-    margin: 40px auto 15px auto;
+    max-width: 17rem;
+    margin: 4rem auto 1.5rem auto;
 }
 
 .select-all:hover {
@@ -27,8 +30,8 @@ h2 {
 
 .select-all::before {
     content: "\25A2";
-    padding: 10px 10px;
-    font-size: 20px;
+    padding: 1rem;
+    font-size: 2rem;
 }
 
 .select-checked {
@@ -37,14 +40,14 @@ h2 {
 
 .select-checked:before {
     content: "\2705";
-    padding: 10px 10px;
-    font-size: 20px;
+    padding: 1rem;
+    font-size: 2rem;
 }
 
 /*container*/
 .container {
     background: #fff;
-    max-width: 600px;
+    max-width: 60rem;
     width: 100%;
     display: table;
     margin: 0 auto;
@@ -58,7 +61,7 @@ input {
     display: block;
     width: 98.4%;
     line-height: 1.5;
-    padding: 8px 0 8px 10px;
+    padding: .8rem 0 .8rem 1rem;
     border-bottom: 1px solid #cfcbcc;
     outline: 0;
 }
@@ -80,8 +83,8 @@ ul li {
 
 ul li:before {
     content: "\25A2";
-    padding: 10px 10px;
-    font-size: 20px;
+    padding: 1rem;
+    font-size: 2rem;
     cursor: pointer;
 }
 
@@ -93,8 +96,8 @@ ul li:last-child {
 }
 .checked:before {
     content: "\2705";
-    padding: 10px 10px;
-    font-size: 20px;
+    padding: 1rem;
+    font-size: 2rem;
 }
 .checked:hover {
     text-decoration: none;
@@ -102,11 +105,11 @@ ul li:last-child {
 
 #todo-list i {
     display: block;
-    font-size: 22px;
+    font-size: 2.2rem;
     color: #444;
     float: right;
     margin-top: 5px;
-    margin-right: 25px;
+    margin-right: 2.5rem;
 }
 
 #todo-list i:hover {
@@ -119,16 +122,16 @@ ul li:last-child {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    max-width: 300px;
+    max-width: 30rem;
     width: 100%;
     background: linear-gradient(to right bottom, #ff5331, #a71c5a);
-    padding: 50px;
+    padding: 5rem;
 }
 
 #edit-popup #old-item{
     border: 0;
     outline: 0;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
     border: 3px solid red;
     outline: 3px solid rgb(255, 255, 255);
 }
@@ -136,8 +139,8 @@ ul li:last-child {
 #edit-popup button, #delete-popup button, #info-popup button{
     border: 0;
     outline: 0;
-    padding: 10px 25px;
-    margin-left: 35px;
+    padding: 1rem 2.5rem;
+    margin-left: 3.5rem;
     background-color: rgb(71, 255, 117);
     color: white;
     cursor: pointer;
@@ -158,17 +161,17 @@ ul li:last-child {
 
 #delete-popup p, #info-popup p {
     color: white;
-    font-size: 17px;
+    font-size: 1.7rem;
 }
 
 #info-popup {
     display: none;
-    max-width: 500px;
+    max-width: 50rem;
 } 
 
 #info-popup #content{
     text-align: center;
-    font-size: 20px;
+    font-size: 2rem;
 } 
 
 #info-popup button {
@@ -184,7 +187,7 @@ ul li:last-child {
 }
 
 #delete-all-item {
-    font-size: 30px;
+    font-size: 3rem;
     cursor: pointer;
 }
 
@@ -195,8 +198,8 @@ ul li:last-child {
 #delete-box p{
     margin: 0;
     color: red;
-    font-size: 30px;
-    margin: 0 0 10px -2%;
+    font-size: 3rem;
+    margin: 0 0 1rem -2%;
 }
 
 /*mobile-menu section*/
@@ -204,14 +207,14 @@ ul li:last-child {
     display: none;
     float: right;
     margin-top: 4px;
-    margin-right: 10px;
+    margin-right: 1rem;
     content: "\2807";
     text-decoration: none;
     color: #2c2c2c;
 }
 
 .delete-tooltip{
-    font-size: 16px;
+    font-size: 1.6rem;
     color: white;
     border-radius: 5px;
     background-color: rgb(253, 109, 84);
@@ -221,9 +224,9 @@ ul li:last-child {
 /*mobile-menu popup*/
 #mobile-menu {
     display: none;
-    max-width: 500px;
+    max-width: 50rem;
     width: 100%;
-    padding: 20px 50px;
+    padding: 2rem 5rem;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -240,7 +243,7 @@ ul li:last-child {
 #mobile-menu input{
     width: 80%;
     margin-left: 10%;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 #mobile-menu button{
@@ -248,7 +251,7 @@ ul li:last-child {
     padding: 5px;
     text-transform: uppercase;
     color: white;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-align: center;
     margin: 1rem 0 1rem 16%;
 }
@@ -283,11 +286,11 @@ ul li:last-child {
         top: 16.6%;
     }
     #delete-all-item{
-        font-size: 25px;
+        font-size: 2.5rem;
     }
     #delete-box p {
         margin-bottom: 2px;
-        font-size: 23px;
+        font-size: 2.3rem;
     }
 }
 
