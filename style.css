@@ -24,14 +24,8 @@ h2 {
     margin: 4rem auto 1.5rem auto;
 }
 
-.select-all:hover {
-   cursor: pointer;
-}
-
 .select-all::before {
     content: "\25A2";
-    padding: 1rem;
-    font-size: 2rem;
 }
 
 .select-checked {
@@ -40,9 +34,20 @@ h2 {
 
 .select-checked:before {
     content: "\2705";
+}
+
+/*element has same properties*/
+
+.select-all::before, .select-checked:before, ul li:before, .checked::before {
     padding: 1rem;
     font-size: 2rem;
 }
+
+/*cursor pointer all element*/
+
+.select-all:hover, ul li:before, #todo-list i:hover, #edit-popup button, #delete-popup button, #info-popup button, #delete-all-item {
+    cursor: pointer;
+ }
 
 /*container*/
 .container {
@@ -77,15 +82,12 @@ ul li {
     font-weight: 400;
     border-bottom: 1px solid #cfcbcc;
     line-height: 1.5;
-    padding: 8px 0;
+    padding: .8rem 0;
     word-wrap: break-word;
 }
 
 ul li:before {
     content: "\25A2";
-    padding: 1rem;
-    font-size: 2rem;
-    cursor: pointer;
 }
 
 ul li:last-child {
@@ -96,8 +98,6 @@ ul li:last-child {
 }
 .checked:before {
     content: "\2705";
-    padding: 1rem;
-    font-size: 2rem;
 }
 .checked:hover {
     text-decoration: none;
@@ -113,7 +113,6 @@ ul li:last-child {
 }
 
 #todo-list i:hover {
-    cursor: pointer;
     color: red;
 }
 
@@ -143,7 +142,6 @@ ul li:last-child {
     margin-left: 3.5rem;
     background-color: rgb(71, 255, 117);
     color: white;
-    cursor: pointer;
     text-transform: uppercase;
 }
 
@@ -188,7 +186,6 @@ ul li:last-child {
 
 #delete-all-item {
     font-size: 3rem;
-    cursor: pointer;
 }
 
 #delete-all-item:hover {
