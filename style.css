@@ -3,6 +3,45 @@ body {
     color: #444;
     font-family: 'Helvetica', arial, sans-serif;
 }
+
+/*Header and main title*/
+h1, h2 {
+    text-align: center;
+    margin-bottom: 0px;
+    line-height: 1;
+}
+h2 {
+    color: gray;
+}
+
+/*select-all section*/
+.select-all {
+    display: block;
+    max-width: 200px;
+    margin: 40px auto 15px auto;
+}
+
+.select-all:hover {
+   cursor: pointer;
+}
+
+.select-all::before {
+    content: "\25A2";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.select-checked {
+    color: green;
+}
+
+.select-checked:before {
+    content: "\2705";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+/*container*/
 .container {
     background: #fff;
     max-width: 600px;
@@ -11,6 +50,9 @@ body {
     margin: 0 auto;
     border: 1px solid #cfcbcc;
 }
+
+/*form and list*/
+
 input {
     border: none;
     display: block;
@@ -20,19 +62,13 @@ input {
     border-bottom: 1px solid #cfcbcc;
     outline: 0;
 }
-h1, h2 {
-    text-align: center;
-    margin-bottom: 0px;
-    line-height: 1;
-}
-h2 {
-    color: gray;
-}
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 ul li {
     color: #899098;
     font-weight: 400;
@@ -41,6 +77,7 @@ ul li {
     padding: 8px 0;
     word-wrap: break-word;
 }
+
 ul li:before {
     content: "\25A2";
     padding: 10px 10px;
@@ -71,7 +108,6 @@ ul li:last-child {
     margin-top: 5px;
     margin-right: 25px;
 }
-
 
 #todo-list i:hover {
     cursor: pointer;
@@ -135,13 +171,11 @@ ul li:last-child {
     font-size: 20px;
 } 
 
-
 #info-popup button {
     margin-left: 40%;
 }
 
-
-/*delete all*/
+/*delete-box section*/
 #delete-box{
     display: none;
     position: fixed;
@@ -165,6 +199,7 @@ ul li:last-child {
     margin: 0 0 10px -2%;
 }
 
+/*mobile-menu section*/
 #mobile::after {
     display: none;
     float: right;
@@ -183,38 +218,8 @@ ul li:last-child {
     padding: 0 5px;
 }
 
-
-.select-all {
-    display: block;
-    max-width: 200px;
-    margin: 40px auto 15px auto;
-}
-
-
-.select-all:hover {
-   cursor: pointer;
-}
-
-.select-all::before {
-    content: "\25A2";
-    padding: 10px 10px;
-    font-size: 20px;
-}
-
-.select-checked {
-    color: green;
-}
-
-.select-checked:before {
-    content: "\2705";
-    padding: 10px 10px;
-    font-size: 20px;
-}
-
-
-/*mobile section popup*/
+/*mobile-menu popup*/
 #mobile-menu {
-
     display: none;
     max-width: 500px;
     width: 100%;
@@ -224,7 +229,6 @@ ul li:last-child {
     left: 50%;
     transform: translate(-50%,-50%);
     background: linear-gradient(to right bottom, #ff5331, #a71c5a);
-    
 }
 
 #mobile-menu p{
@@ -248,6 +252,7 @@ ul li:last-child {
     text-align: center;
     margin: 1rem 0 1rem 16%;
 }
+
 #mobile-menu #save {
     background-color: rgb(41, 241, 124);
 }
@@ -256,6 +261,7 @@ ul li:last-child {
     background-color: rgb(240, 59, 35);
 }
 
+/*mobile responsive section*/
 @media (max-width: 1030px) {
     #delete-box{
         top: 8%;
@@ -267,34 +273,26 @@ ul li:last-child {
     #mobile::after {
         display: block;
     }
-
     #todo-list i {
         display: none;
     }
-
     .delete-tooltip {
         display: none;
     }
-
     #delete-box{
         top: 16.6%;
     }
-
     #delete-all-item{
         font-size: 25px;
     }
-
     #delete-box p {
         margin-bottom: 2px;
         font-size: 23px;
     }
 }
 
-
 @media (max-width: 320px) {
-
     #delete-box{
         top: 22.6%;
     }
-
 }
