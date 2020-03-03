@@ -267,6 +267,12 @@ function selectItemBox(index) {
   filtedArray.length > 9 ? counterDelete.innerText = filtedArray.length : counterDelete.innerText = "0" + filtedArray.length;
 
   filtedArray.length < 1 ? selectedAllPersons.style.display = "none" : selectedAllPersons.style.display = "block";
+
+  filtedArray.length < 1 ? document.getElementById("select-all").innerHTML = `Check all ${todoListLength} items` : document.getElementById("select-all").innerHTML = `Checked ${filtedArray.length} items`;
+
+  if(filtedArray.length < 1){
+    document.getElementById("select-all").classList.remove('select-checked');
+  }
 }
 
 function deteteSelectedStudents (filtedArray) {
