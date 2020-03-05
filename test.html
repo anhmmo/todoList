@@ -7,139 +7,14 @@
 </head>
 <body>
 
-
-
-<button id="create">create</button>
 <button id="read">read</button>
 <button id="edit">edit</button>
-<button id="delete">delete</button>
-<button id="collection">collection</button>
-<button id="readcollection">read collection</button>
 
 
     <script>
-        let binId, collectionId;
-
-
-//read collection 
-document.getElementById("readcollection").addEventListener("click", readcollection);
-function readcollection() {
-  let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    let getA = JSON.parse(req.responseText).records;
-    console.log(getA.length);
-  }
-};
-
-req.open("GET", "https://api.jsonbin.io/e/collection/"+ collectionId +"/all-bins", true);
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send();
-
-}
-
-
-//add collection
-        document.getElementById("collection").addEventListener("click", Ccollection);
-function Ccollection() {
-  let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    console.log(req.responseText);
-    let as = JSON.parse(req.responseText);
-    collectionId = as.id;
-  }
-};
-
-req.open("POST", "https://api.jsonbin.io/c", true);
-req.setRequestHeader("Content-type", "application/json");
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send('{"name": "todolist"}');
-
-}
-
-
-
-      
-  //create
-  document.getElementById("create").addEventListener("click", createContent);
-  function createContent() {
-    let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    console.log("file created succefullly");
-    let as = JSON.parse(req.responseText);
-    binId = as.id;
-  }
-};
-
-req.open("POST", "https://api.jsonbin.io/b", true);
-req.setRequestHeader("Content-type", "application/json");
-req.setRequestHeader("collection-id", collectionId);
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send('[{"name":"Aliisa Takkula","address":"Akonmäentie 15 74100 IISALMI","phone":"0501071498","email":"AliisaTakkula@jourrapide.com","age":"56","job":"Student"}]');
-}
-
 //open- request
 
-document.getElementById("read").addEventListener("click", readContent);
-  function readContent() {
-    let req = new XMLHttpRequest();
 
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    console.log(req.responseText);
-  }
-};
-
-req.open("GET", "https://api.jsonbin.io/b/" + binId , true);  //read version 1
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send();
-}
-
-
-
-// update - edit 
-document.getElementById("edit").addEventListener("click", editContent);
-function editContent(){
-
-  let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    console.log(req.responseText);
-  }
-};
-
-req.open("PUT", "https://api.jsonbin.io/b/"+binId, true);
-req.setRequestHeader("Content-type", "application/json");
-req.setRequestHeader("versioning", "false");
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send('[{"name":"nguyen tran","address":"Akonmäentie 15 74100 IISALMI","phone":"0501071498","email":"AliisaTakkula@jourrapide.com","age":"56","job":"Student"}, {"name":"nguyen tran","address":"Akonmäentie 15 74100 IISALMI","phone":"0501071498","email":"AliisaTakkula@jourrapide.com","age":"56","job":"Student"}]');
-
-
-}
-
-
-//delete
-document.getElementById("delete").addEventListener("click", deleteContent);
-function deleteContent () {
-  let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState == XMLHttpRequest.DONE) {
-    console.log(req.responseText);
-  }
-};
-
-req.open("DELETE", "https://api.jsonbin.io/b/" + binId, true);
-req.setRequestHeader("secret-key", "$2b$10$p0RiQ1ExtkprMZyCXk1mGONoWjnTcTgcT0.2gVz4jxamiKGNW.uPi");
-req.send();
-
-}
 
     </script>
 </body>
