@@ -131,7 +131,7 @@ renderTodoList();
 
 
 
-
+//render all items to the list
 function renderTodoList () {
     if(localStorage.length > 0) {
     
@@ -273,6 +273,9 @@ function selectItemBox(index) {
     document.getElementById("select-all").classList.remove('select-checked');
   }
 }
+
+
+//delete selected item box
 
 function deteteSelectedStudents (filtedArray) {
  
