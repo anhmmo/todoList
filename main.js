@@ -327,7 +327,7 @@ function chooseAll() {
 
 
 
-//open 3 dots menu box
+//menubox for mobile screen
 
 
 let mobile = document.getElementById("mobile");
