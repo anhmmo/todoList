@@ -202,7 +202,7 @@ function editItem(index) {
   });
 }
 
-
+//get item info
 function infoItem(index) {
   preventListFunction(index);
   let infoPopup = document.getElementById("info-popup");
