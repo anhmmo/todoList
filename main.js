@@ -145,6 +145,8 @@ function renderTodoList () {
     
 }
 
+
+//delete items function 
 function deleteItem(index) {
   preventListFunction(index);
 
